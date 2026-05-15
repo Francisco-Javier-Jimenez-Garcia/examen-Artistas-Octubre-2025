@@ -1,0 +1,12 @@
+{
+    "getAll": {
+        "description": "Gets all entries from 'artistswithusers'",
+        "route": "/artistswithusers",
+        "method": "GET",
+        "sql": "SELECT * FROM artistswithusers",
+        "auth_required": false,
+        "allowed_roles": [
+            "*"
+        ]
+    }
+}

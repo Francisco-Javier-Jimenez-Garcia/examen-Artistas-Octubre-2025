@@ -1,0 +1,93 @@
+<!doctype HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="images/favicon.ico">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+
+    <script src="js/libs/bootstrap.min.js"></script>
+    <script src="js/libs/axios.min.js"></script>
+    <script src="js/utils/include.js"></script>
+
+    <script src="js/header.js" type="module"></script>
+    <script src="js/create_artists.js" type="module"></script>
+
+    <title>Create Artists</title>
+</head>
+
+<body>
+    <div id="page-header"></div>
+
+    <div class="container">
+        <div id="errors"></div>
+        <h3 class="text-center">Vista Create Artists</h3>
+        
+        <!-- Creamos el formulario con Bootstrap -->
+
+        <!-- Campos: name, bio, startDate, imageUrl, numAlbums -->
+
+        <form id="artist-form">
+            
+            <div class="row">
+                <div class="col-md mb-3">
+                    <label for="name-input">Name:</label>
+                    <input type="text" class="form-control" id="name-input" name="name" placeholder="Name" required>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md mb-3">
+                    <label for="bio-input">Biography:</label>
+                    <input type="text" class="form-control" id="bio-input" name="bio" placeholder="Biography" required>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md mb-3">
+                    <label for="startDate">Start date:</label>
+                    <input type="date" class="form-control" id="startDate-input" name="startDate" placeholder="Start date" required>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md mb-3">
+                    <label for="imageUrl">Image URL:</label>
+                    <input type="text" class="form-control" id="imageUrl-input" name="imageUrl" placeholder="Image URL" required>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md mb-3">
+                    <label for="numAlbums">Number of albums:</label>
+                    <input type="number" class="form-control" id="numAlbums-input" name="numAlbums" placeholder="Ej: 3" required>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md text-center">
+                    <button type="submit" id="btn" class="btn btn-primary">
+                        Create Artist
+                    </button>
+                </div>
+            </div>
+
+        </form>
+
+
+        <!-- Sustituir el contenido de content por la visualización solicitada en el enunciado -->
+        <div id ="content" class="ratio ratio-16x9">
+            
+        </div>
+    </div>
+   
+    <script>
+        include("header.html", "#page-header");
+    </script>
+
+</body>
+
+</html>

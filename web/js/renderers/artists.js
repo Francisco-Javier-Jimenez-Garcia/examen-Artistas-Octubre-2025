@@ -9,8 +9,8 @@ const artistsRenderer = {
         //usamos las comillas invertidas `` para mezclar html con JS
 
         let html = /*html*/ ` 
-            <div class="card">  <!-- En la imagen se ve un recuadro con borde, entonces ponemos card -->
-                <div class="row"> <!-- Son filas, pues ponemos row -->
+            <div class="border border-dark rounded p-3 bg-white">  <!-- En la imagen se ve un recuadro con borde, entonces ponemos card -->
+                <div class="row align-items-center"> <!-- Son filas, pues ponemos row -->
 
                     <div class="col-md-4">
                         <img src="${artist.imageUrl}" class="img-fluid rounded-start" alt="Imagen de ${artist.name}">
@@ -18,10 +18,10 @@ const artistsRenderer = {
                     <div class="col-md-8">
                         <h5 class="card-title">${artist.name}</h5>
                         <p class="card-text">${artist.bio}</p>
-                        <p class="card-text mt-4>
-                            <img src="${artistsRenderer.avatarUrl}" class="rounded-circle" style="width: 30px; height: 30px; object-fit: cover;" alt="Avatar de ${artist.username}">
-                            <small class="text-muted ms-2">@${artist.username} - Edad: ${artist.age} años</small>
+                        <p class="card-text mt-4">
+                            <img src="${artist.avatarUrl}" class="rounded-circle" style="width: 30px; height: 30px; object-fit: cover;">
                         </p>
+                        <small class="text-dark ms-2">@${artist.username} - Edad: ${artist.age} años</small>
 
 
                     </div> <!-- Aqui le asignamos 8 columnas -->

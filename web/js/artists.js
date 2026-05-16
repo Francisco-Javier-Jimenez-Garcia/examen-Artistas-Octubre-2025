@@ -1,6 +1,6 @@
 "use strict"
 
-import { galleryRenderer } from '/web/js/renderers/gallery.js';
+import { galleryRenderer } from '/js/renderers/gallery.js';
 // 1.) IMPORTACIONES
 
 // Importamos la API de la vista artistwithusers

@@ -19,6 +19,11 @@ import { sessionManager } from "/js/utils/session.js";
 
 
 
+// Para editar en el formulario y que aparezcan los datos de ese artistId, leemos la URL:
+
+const urlParams = new URLSearchParams(window.location.search);
+const artistId = urlParams.get("artistId"); // valdrá 1 si hay un artistId en la URL o null si no lo hay
+
 
 
 async function main() {
@@ -26,10 +31,46 @@ async function main() {
 
     let registerForm = document.getElementById("artist-form");
 
+    // del ejercicio 3: si ha ID en la URL cargamos los datos
+
+    if (artistId !== null){
+        loadartist();
+    }
+
     // cuando se envie (onsubmit) ejecuta la funcion handleSubmit
 
     registerForm.onsubmit = handleSubmit;
 
+}
+
+async function loadartist(){  // Funcion para editar datos y que los cargue segun el artistId
+    
+    try{
+        let artist = await artistsAPI_auto.getById(artistId);
+
+        // Buscamos los inputs reales
+
+        let inputName = document.getElementById("name-input");
+        let inputBio = document.getElementById("bio-input");
+        let inputStartDate = document.getElementById("startDate-input");
+        let inputImageUrl = document.getElementById("imageUrl-input");
+        let inputNumAlbums = document.getElementById("numAlbums-input");
+        
+        // Rellenamos con los datos del artista
+        inputName.value = artist.name;
+        inputBio.value = artist.bio;
+        inputStartDate.value = artist.startDate;
+        inputImageUrl.value  = artist.imageUrl;
+        inputNumAlbums.value = artist.numAlbums;
+
+        // cambiamos el texto del boton Submit de "Create" a "Update"
+        let btn = document.getElementById("btn");
+        btn.innerHTML = "Update Artist";
+    }
+    catch{
+        messageRenderer.showErrorMessage("Error al cargar el artista");
+
+    }
 }
 
 async function handleSubmit(event){
@@ -67,10 +108,17 @@ async function handleSubmit(event){
 
             let userLogueado = sessionManager.getLoggedUser();
             formData.append("userId", userLogueado.userId);
-            
-            //Ahora llamamos a la API pasandole el formulario
 
-            await artistsAPI_auto.create(formData);
+            // aqui se decide si crear o actualizar
+
+            if (artistId !== null){
+                await artistsAPI_auto.update(formData, artistId);  //Si en la URL hay un artistId actualizamos
+            }
+            else{
+                //Ahora llamamos a la API pasandole el formulario
+                await artistsAPI_auto.create(formData);   //Aqui simplemente creamos el nuevo artista si la condicion de antes no se cumplia
+            }
+            
 
             //Si ha habido exito enviamos al usuario a la vista de artistas (esto se podria eliminar o comentar)
 

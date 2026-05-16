@@ -22,7 +22,9 @@ const artistsRenderer = {
                             <img src="${artist.avatarUrl}" class="rounded-circle" style="width: 30px; height: 30px; object-fit: cover;">
                         </p>
                         <small class="text-dark ms-2">@${artist.username} - Edad: ${artist.age} años</small>
-
+                        <p>
+                        <a class="btn btn-warning" href="create_artists.html?artistId=${artist.artistId}">Editar</a> <!-- El nombre de la variable nos lo inventamos (artistId por ejemplo) -->
+                        </p>
 
                     </div> <!-- Aqui le asignamos 8 columnas -->
 
